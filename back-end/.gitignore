@@ -1,0 +1,5 @@
+/target
+*.iws
+/dependency-reduced-pom.xml
+*.iml
+*.ipr
