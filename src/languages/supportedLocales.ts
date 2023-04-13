@@ -4,7 +4,7 @@ const supportedLocales = {
   'en-US': {
     common: require('./locales/en-US/common.json'),
     dashboard: require('./locales/en-US/dashboard.json'),
-    aside: require('./locales/pt-BR/aside.json'),
+    aside: require('./locales/en-US/aside.json'),
   },
   'pt-BR': {
     common: require('./locales/pt-BR/common.json'),

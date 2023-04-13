@@ -111,7 +111,7 @@ const SelectField: React.FC<Props> = ({
                 {selectPlaceholder}
                 {currentData.flag && <Flag source={currentData.flag} />}
                 <span>{currentData.label}</span>
-                <FiChevronDown size={18} />
+                {/* <FiChevronDown size={18} /> */}
               </Selected>
             )}
           </>

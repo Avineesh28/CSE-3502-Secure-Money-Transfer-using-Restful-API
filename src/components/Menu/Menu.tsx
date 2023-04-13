@@ -27,7 +27,6 @@ const Menu: React.FC = () => {
       return containerRef.current?.classList.add('animate');
     }
   }, []);
-
   return (
     <Container ref={containerRef}>
       <User className="container-user-details" />

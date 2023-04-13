@@ -16,8 +16,8 @@ const User: React.FC<Props> = ({ className }) => {
       </Avatar>
 
       <Info>
-        <Username>Mateus Henrique</Username>
-        <UserId>2312T5B</UserId>
+        <Username>Robin Hood</Username>
+        <UserId>CSE3502</UserId>
       </Info>
     </Container>
   );

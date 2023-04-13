@@ -13,6 +13,13 @@ import {
 } from 'store/modules/dashboard/actions';
 import Dashboard from './Layout/Dashboard.layout';
 
+const crypto = require('crypto');
+const encryptionKey = crypto.randomBytes(32);
+const iv = crypto.randomBytes(16);
+console.info('Initialisation Vector', iv)
+const algorithm = 'aes-256-cbc';
+const cipher = crypto.createCipheriv(algorithm, encryptionKey, iv);
+
 const DashboardScreen: React.FC = () => {
   const dispatch = useDispatch();
 
@@ -69,18 +76,19 @@ const DashboardScreen: React.FC = () => {
 
   const handleSubmitConfirm = useCallback(() => {
     const payload = `
-      {
-        sentAt: ${moment().format()},
-        plan: ${typeDelivery},
-        sent: ${youSend},
-        received: ${recipientGets},
-        from: ${fromCountry.value},
-        to: ${toCountry.value},
-      }
+        SentAt: ${moment().format()},
+        Plan: ${typeDelivery},
+        Sent: ${youSend},
+        Received: ${recipientGets},
+        From: ${fromCountry.value},
+        To: ${toCountry.value},
     `;
-
-    alert(payload);
-  }, [youSend, recipientGets, fromCountry, toCountry, typeDelivery]);
+    let encryptedValue = cipher.update(payload, 'utf8', 'base64');
+    encryptedValue += cipher.final('base64');
+    console.info('Encrypted Value: ', encryptedValue);
+    console.info('Encrypted Key: ', encryptionKey.toString('hex'));
+    alert('Payment Succesfull!');
+ }, [youSend, recipientGets, fromCountry, toCountry, typeDelivery]);
 
   return (
     <Dashboard
